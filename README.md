@@ -6,7 +6,7 @@ Wrapper for packer to support rosco multi-region bakes in spinnaker
 ./install.sh
 ```
 
-Fill out the vpc and subnet info for each desired bake region in /opt/rosco/config/packer
+Fill out the vpc and subnet info for each desired bake region in /opt/rosco/config/packer/aws-ebs-{region}.json
 
 ## Details
 This wrappa is at /usr/local/bin/packer
