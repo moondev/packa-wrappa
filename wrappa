@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ARGS="$@"
+REGION=$4
+IFS='=' read -ra REG <<< "$REGION"
+NEWCONFIG="aws-ebs-${REG[1]}.json"
+ARGS="${ARGS/aws-ebs.json/$NEWCONFIG}"
+
+/opt/packer $ARGS
