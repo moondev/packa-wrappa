@@ -1,6 +1,14 @@
 # Packa Wrappa
 Wrapper for packer to support rosco multi-region bakes in spinnaker
 
+## Summary
+
+[Rosco](https://github.com/spinnaker/rosco) supports multi-region bakes, but only a single [aws-ebs.json](https://github.com/spinnaker/rosco/blob/master/rosco-web/config/packer/aws-ebs.json)
+
+The problem with that if you are baking in a vpc, they can't span multiple regions. Packer needs the vpc and subnet id to spin up the builder in that region.
+
+This wrapper tells packer to a look for a aws-ebs-{region}.json instead of aws-ebs.json. That way you can specify the subnet and vpc for each region you bake in.
+
 ## Installation on Rosco
 ```
 ./install.sh
