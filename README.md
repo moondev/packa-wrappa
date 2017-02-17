@@ -29,6 +29,21 @@ packer build -color=false -var aws_region=us-west-2 -var aws_ssh_username=ubuntu
 ```
 Fake packer intercepts it because it is on the PATH and then calls:
 ```
-/opt/packer build -color=false -var aws_region=us-west-2 -var aws_ssh_username=ubuntu -var aws_instance_type=t2.micro -var aws_source_ami=ami-d732f0b7 -var aws_target_ami=nginx-all-20160721161956-ubuntu -var aws_associate_public_ip_address=true -var package_type=deb -var packages=nginx -var configDir=/opt/rosco/config/packer /opt/rosco/config/packer/aws-ebs-west-2.json
+/opt/packer build -color=false -var aws_region=us-west-2 -var aws_ssh_username=ubuntu -var aws_instance_type=t2.micro -var aws_source_ami=ami-d732f0b7 -var aws_target_ami=nginx-all-20160721161956-ubuntu -var aws_associate_public_ip_address=true -var package_type=deb -var packages=nginx -var configDir=/opt/rosco/config/packer /opt/rosco/config/packer/aws-ebs-us-west-2.json
 ```
-aws-ebs-west-2.json and aws-ebs-east-1.json have their specific vpc and subnet info.
+aws-ebs-us-west-2.json and aws-ebs-us-east-1.json have their specific vpc and subnet info.
+
+## Advanced Cases
+
+If you have a customized packer config (for example customXYZ.json instead of aws-ebs.json) the methodology is very similar.
+```
+./install.sh customXYZ
+```
+or
+```
+./install.sh customXYZ.json
+```
+This creates files customXYZ-us-west-2.json and customXYZ-us-east-1.json. Set their specific vpc and subnet info.
+Additional configurations many be generated even without the install.sh script: `cp customA.json customA-us-west-1.json`.
+
+ 
