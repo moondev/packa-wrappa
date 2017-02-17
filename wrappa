@@ -3,7 +3,9 @@
 ARGS="$@"
 REGION=$4
 IFS='=' read -ra REG <<< "$REGION"
-NEWCONFIG="aws-ebs-${REG[1]}.json"
-ARGS="${ARGS/aws-ebs.json/$NEWCONFIG}"
+ORIGCONFIG=`basename -s .json "${@: -1}"`
+NEWCONFIG="$ORIGCONFIG-${REG[1]}.json"
+ARGS="${ARGS/$ORIGCONFIG.json/$NEWCONFIG}"
 
 /opt/packer $ARGS
+
